@@ -23,20 +23,19 @@ $checks->group('suggestions')->passing();
 
 ## Why
 
-I needed a way to determine whether an environment meets all the minimum requirements to run an application. For example, does the server has all the required PHP extensions? Is PHP’s memory limit enough? Is the storage directory writable? — Many things need to be checked to ensure an application will run as expected. In addition to checking requirements, I also wanted to perform post-installation and post-update checks and ensure that the application is properly installed or upgraded and that the main components are working as expected.
+When developing self-hosted applications, it is common to provide users with a check-list of things that they must complete before installing an application on their servers. Or, you give them an easy way to view a global picture of how the application and server are performing at any given time — improving error debugging and communication with developers. PhpCheckup gives developers a quick and easy way to build such check-lists as a stand-alone package or directly integrated into their applications.
 
 ## Use cases
-- App pre-installation checks
+- Application pre-installation checks
     - For example, to make sure that the server meets all the minimum requirements
-- App post-installation checks
+- Application post-installation checks
     - For example, make sure that the front-page and API are returning 200 status code, and
     - oAuth server is properly configured, and
     - Installer is disabled
-- App post-update checks
-    - For example, perform same checks mentioned in pre-installation and post-installation, so we can make sure that the app still meets the minimum requirements, the main components of the application are still working, and
-    - Queue server is running
+- Application post-update checks
 - A webpage inside an administrative system showing all the health checks of the application.
-- Performance suggestions
+- A stand-alone package so users can check whether their server meet a minimum set of requirements for a particular application, before purchasing.
+- Application performance check-list and suggestions.
 - Perform environment-specific checks
 
 ## Example health checks
@@ -59,13 +58,6 @@ I needed a way to determine whether an environment meets all the minimum require
 - Warn about debug flag on a production environment
 - SSL Check
 - Warn about permissive file-permissions
-
-## Health checks details
-- Title (based on status, or static)
-- Message (details about the result, may contain markdown links, optional)
-- Tags (e.g., Security, Performance, etc)
-- Groups (e.g., Pre-Install, Post-Install, etc)
-- Is passing (boolean)
 
 ## Health check results export options
 
