@@ -2,6 +2,25 @@
 
 Framework agnostic application health and requirement checks.
 
+## TL;DR
+
+```php
+use \Gerardojbaez\Checker\Checks\PhpExtensionIsLoaded;
+use \Gerardojbaez\Checker\Manager;
+
+$checks = new Manager;
+
+// Register checks
+$checks->add((new PhpExtensionIsLoaded('mbstring'))->addGroup('requirements'));
+$checks->add((new PhpExtensionIsLoaded('openssl'))->addGroup('requirements'));
+$checks->add((new PhpExtensionIsLoaded('mailparse'))->addGroup('suggestions'));
+
+// Run checks
+$checks->passing();
+$checks->group('requirements')->passing();
+$checks->group('suggestions')->passing();
+```
+
 ## Why
 
 I needed a way to determine whether an environment meets all the minimum requirements to run an application. For example, does the server has all the required PHP extensions? Is PHP’s memory limit enough? Is the storage directory writable? — Many things need to be checked to ensure an application will run as expected. In addition to checking requirements, I also wanted to perform post-installation and post-update checks and ensure that the application is properly installed or upgraded and that the main components are working as expected.
@@ -44,15 +63,9 @@ I needed a way to determine whether an environment meets all the minimum require
 ## Health checks details
 - Title (based on status, or static)
 - Message (details about the result, may contain markdown links, optional)
-- Tags (e.g., Security, Performance)
-- Groups (e.g., Pre-Install, Post-Install, Pre-Update, Post-Update, local, etc)
-- Status
-    - Passing
-    - Informational
-    - Recommendation
-    - Warning
-    - Critical
-    - Failing
+- Tags (e.g., Security, Performance, etc)
+- Groups (e.g., Pre-Install, Post-Install, etc)
+- Is passing (boolean)
 
 ## Health check results export options
 
