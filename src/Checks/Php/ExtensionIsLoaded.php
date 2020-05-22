@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Gerardojbaez\PhpCheckup\Checks;
+namespace Gerardojbaez\PhpCheckup\Checks\Php;
 
 use Gerardojbaez\PhpCheckup\CheckResult;
+use Gerardojbaez\PhpCheckup\Checks\Check;
 use Gerardojbaez\PhpCheckup\Status;
 
-final class PhpExtensionIsLoaded extends Check
+final class ExtensionIsLoaded extends Check
 {
     /**
      * The extension name to be tested.

@@ -5,15 +5,15 @@ Framework agnostic application health and requirement checks.
 ## TL;DR
 
 ```php
-use \Gerardojbaez\PhpCheckup\Checks\PhpExtensionIsLoaded;
+use \Gerardojbaez\PhpCheckup\Checks\Php\ExtensionIsLoaded;
 use \Gerardojbaez\PhpCheckup\Manager;
 
 $checks = new Manager;
 
 // Register checks
-$checks->add((new PhpExtensionIsLoaded('mbstring'))->addGroup('requirements'));
-$checks->add((new PhpExtensionIsLoaded('openssl'))->addGroup('requirements'));
-$checks->add((new PhpExtensionIsLoaded('mailparse'))->addGroup('suggestions'));
+$checks->add((new ExtensionIsLoaded('mbstring'))->addGroup('requirements'));
+$checks->add((new ExtensionIsLoaded('openssl'))->addGroup('requirements'));
+$checks->add((new ExtensionIsLoaded('mailparse'))->addGroup('suggestions'));
 
 // Run checks
 $checks->passing();

@@ -1,6 +1,6 @@
 <?php
 
-use Gerardojbaez\PhpCheckup\Checks\PhpExtensionIsLoaded;
+use Gerardojbaez\PhpCheckup\Checks\Php\ExtensionIsLoaded;
 use PHPUnit\Framework\TestCase;
 
 final class CheckTest extends TestCase
@@ -8,7 +8,7 @@ final class CheckTest extends TestCase
     public function testAddGetGroups()
     {
         // Arrange
-        $check = new PhpExtensionIsLoaded('dummy');
+        $check = new ExtensionIsLoaded('dummy');
         $check->addGroup('one');
         $check->addGroup('two');
 
@@ -23,7 +23,7 @@ final class CheckTest extends TestCase
     public function testHasAnyGroup($expected, $groups)
     {
         // Arrange
-        $check = new PhpExtensionIsLoaded('dummy');
+        $check = new ExtensionIsLoaded('dummy');
         $check->addGroup('one');
         $check->addGroup('two');
         $check->addGroup('three');

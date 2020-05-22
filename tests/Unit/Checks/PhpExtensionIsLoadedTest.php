@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 // Use the same namespace as the class under test so we can
 // mock its function dependencies.
-namespace Gerardojbaez\PhpCheckup\Checks;
+namespace Gerardojbaez\PhpCheckup\Checks\Php;
 
 use PHPUnit\Framework\TestCase;
 use Gerardojbaez\PhpCheckup\CheckResult;
 use Gerardojbaez\PhpCheckup\Status;
-use Gerardojbaez\PhpCheckup\Checks\PhpExtensionIsLoaded;
+use Gerardojbaez\PhpCheckup\Checks\Php\ExtensionIsLoaded;
 
 /**
  * Mock PHP function.
@@ -27,7 +27,7 @@ final class PhpExtensionIsLoadedTest extends TestCase
     public function testName($status, $message, $extension)
     {
         // Arrange
-        $check = new PhpExtensionIsLoaded($extension);
+        $check = new ExtensionIsLoaded($extension);
 
         // Act
         $name = $check->name();
@@ -43,7 +43,7 @@ final class PhpExtensionIsLoadedTest extends TestCase
     public function testCheck($status, $message, $extension)
     {
         // Arrange
-        $check = new PhpExtensionIsLoaded($extension);
+        $check = new ExtensionIsLoaded($extension);
 
         // Act
         $result = $check->check();
