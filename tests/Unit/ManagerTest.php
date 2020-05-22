@@ -1,9 +1,9 @@
 <?php
 
-use Gerardojbaez\Checker\CheckResult;
-use Gerardojbaez\Checker\Contracts\Check;
-use Gerardojbaez\Checker\Manager;
-use Gerardojbaez\Checker\Status;
+use Gerardojbaez\PhpCheckup\CheckResult;
+use Gerardojbaez\PhpCheckup\Contracts\Check;
+use Gerardojbaez\PhpCheckup\Manager;
+use Gerardojbaez\PhpCheckup\Status;
 use PHPUnit\Framework\TestCase;
 
 final class ManagerTest extends TestCase

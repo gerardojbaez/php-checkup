@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Gerardojbaez\Checker;
+namespace Gerardojbaez\PhpCheckup;
 
-use Gerardojbaez\Checker\Contracts\Check;
-use Gerardojbaez\Checker\Contracts\Manager as ManagerInterface;
+use Gerardojbaez\PhpCheckup\Contracts\Check;
+use Gerardojbaez\PhpCheckup\Contracts\Manager as ManagerInterface;
 
 final class Manager implements ManagerInterface
 {

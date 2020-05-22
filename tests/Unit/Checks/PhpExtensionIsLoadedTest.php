@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 // Use the same namespace as the class under test so we can
 // mock its function dependencies.
-namespace Gerardojbaez\Checker\Checks;
+namespace Gerardojbaez\PhpCheckup\Checks;
 
 use PHPUnit\Framework\TestCase;
-use Gerardojbaez\Checker\CheckResult;
-use Gerardojbaez\Checker\Status;
-use Gerardojbaez\Checker\Checks\PhpExtensionIsLoaded;
+use Gerardojbaez\PhpCheckup\CheckResult;
+use Gerardojbaez\PhpCheckup\Status;
+use Gerardojbaez\PhpCheckup\Checks\PhpExtensionIsLoaded;
 
 /**
  * Mock PHP function.

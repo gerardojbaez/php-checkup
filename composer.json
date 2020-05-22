@@ -13,7 +13,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Gerardojbaez\\Checker\\": "src/"
+            "Gerardojbaez\\PhpCheckup\\": "src/"
         }
     },
     "require-dev": {

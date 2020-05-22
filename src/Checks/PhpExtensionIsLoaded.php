@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Gerardojbaez\Checker\Checks;
+namespace Gerardojbaez\PhpCheckup\Checks;
 
-use Gerardojbaez\Checker\CheckResult;
-use Gerardojbaez\Checker\Status;
+use Gerardojbaez\PhpCheckup\CheckResult;
+use Gerardojbaez\PhpCheckup\Status;
 
 final class PhpExtensionIsLoaded extends Check
 {

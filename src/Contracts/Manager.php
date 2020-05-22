@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Gerardojbaez\Checker\Contracts;
+namespace Gerardojbaez\PhpCheckup\Contracts;
 
 /**
  * Interface for checks managers to implement.

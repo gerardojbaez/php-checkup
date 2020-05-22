@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Gerardojbaez\Checker\Checks;
+namespace Gerardojbaez\PhpCheckup\Checks;
 
-use Gerardojbaez\Checker\CheckResult;
-use Gerardojbaez\Checker\Contracts\Check as CheckInterface;
+use Gerardojbaez\PhpCheckup\CheckResult;
+use Gerardojbaez\PhpCheckup\Contracts\Check as CheckInterface;
 
 abstract class Check implements CheckInterface
 {

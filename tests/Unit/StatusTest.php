@@ -1,6 +1,6 @@
 <?php
 
-use Gerardojbaez\Checker\Status;
+use Gerardojbaez\PhpCheckup\Status;
 use PHPUnit\Framework\TestCase;
 
 final class StatusTest extends TestCase

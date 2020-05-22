@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Gerardojbaez\Checker;
+namespace Gerardojbaez\PhpCheckup;
 
 final class CheckResult
 {

@@ -5,8 +5,8 @@ Framework agnostic application health and requirement checks.
 ## TL;DR
 
 ```php
-use \Gerardojbaez\Checker\Checks\PhpExtensionIsLoaded;
-use \Gerardojbaez\Checker\Manager;
+use \Gerardojbaez\PhpCheckup\Checks\PhpExtensionIsLoaded;
+use \Gerardojbaez\PhpCheckup\Manager;
 
 $checks = new Manager;
 

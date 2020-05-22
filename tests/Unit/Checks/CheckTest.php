@@ -1,6 +1,6 @@
 <?php
 
-use Gerardojbaez\Checker\Checks\PhpExtensionIsLoaded;
+use Gerardojbaez\PhpCheckup\Checks\PhpExtensionIsLoaded;
 use PHPUnit\Framework\TestCase;
 
 final class CheckTest extends TestCase

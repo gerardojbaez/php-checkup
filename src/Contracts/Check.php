@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Gerardojbaez\Checker\Contracts;
+namespace Gerardojbaez\PhpCheckup\Contracts;
 
-use Gerardojbaez\Checker\CheckResult;
+use Gerardojbaez\PhpCheckup\CheckResult;
 
 /**
  * Interface for all checks to implement.
