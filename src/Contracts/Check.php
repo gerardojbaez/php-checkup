@@ -26,13 +26,6 @@ interface Check
     public function addGroup(string $name): Check;
 
     /**
-     * Determine if check has any of the provided groups.
-     *
-     * @param string[] $names
-     */
-    public function hasAnyGroup(array $names): bool;
-
-    /**
      * Get the check's name.
      */
     public function name(): string;

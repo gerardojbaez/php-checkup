@@ -77,7 +77,7 @@ final class Manager implements ManagerInterface
     {
         return new static(array_filter(
             $this->checks, static function ($check) use ($groups) {
-                return $check->hasAnyGroup($groups);
+                return count(array_intersect($check->groups(), $groups));
             }
         ));
     }

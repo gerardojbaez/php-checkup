@@ -37,24 +37,6 @@ abstract class Check implements CheckInterface
     }
 
     /**
-     * Determine if check has any of the provided groups.
-     *
-     * @param string[] $names
-     */
-    public function hasAnyGroup(array $names): bool
-    {
-        $names = array_filter($names, 'is_string');
-
-        foreach ($names as $group) {
-            if (in_array($group, $this->groups)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * Get the check's name.
      */
     abstract public function name(): string;

@@ -43,21 +43,18 @@ final class ManagerTest extends TestCase
         // Arrange
         $first = $this->createMock(Check::class);
         $first->expects($this->once())
-             ->method('hasAnyGroup')
-             ->with($this->equalTo(['a']))
-             ->will($this->returnValue(true));
+             ->method('groups')
+             ->will($this->returnValue(['a', 'b']));
 
         $second = $this->createMock(Check::class);
         $second->expects($this->once())
-             ->method('hasAnyGroup')
-             ->with($this->equalTo(['a']))
-             ->will($this->returnValue(true));
+             ->method('groups')
+             ->will($this->returnValue(['a', 'b']));
 
         $third = $this->createMock(Check::class);
         $third->expects($this->once())
-             ->method('hasAnyGroup')
-             ->with($this->equalTo(['a']))
-             ->will($this->returnValue(false));
+             ->method('groups')
+             ->will($this->returnValue(['b']));
 
         $manager = new Manager([
             $first, $second, $third
@@ -79,21 +76,18 @@ final class ManagerTest extends TestCase
         // Arrange
         $first = $this->createMock(Check::class);
         $first->expects($this->once())
-             ->method('hasAnyGroup')
-             ->with($this->equalTo(['b', 'c', 'd']))
-             ->will($this->returnValue(true));
+             ->method('groups')
+             ->will($this->returnValue(['b']));
 
         $second = $this->createMock(Check::class);
         $second->expects($this->once())
-             ->method('hasAnyGroup')
-             ->with($this->equalTo(['b', 'c', 'd']))
-             ->will($this->returnValue(true));
+             ->method('groups')
+             ->will($this->returnValue(['c', 'e']));
 
         $third = $this->createMock(Check::class);
         $third->expects($this->once())
-             ->method('hasAnyGroup')
-             ->with($this->equalTo(['b', 'c', 'd']))
-             ->will($this->returnValue(false));
+             ->method('groups')
+             ->will($this->returnValue(['f']));
 
         $manager = new Manager([
             $first, $second, $third
