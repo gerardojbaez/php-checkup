@@ -1,9 +1,9 @@
 <?php
 
-use Gerardojbaez\PhpCheckup\CheckResult;
-use Gerardojbaez\PhpCheckup\Contracts\Check;
+use Gerardojbaez\PhpCheckup\Checks\Check;
+use Gerardojbaez\PhpCheckup\Contracts\Check as CheckInterface;
 use Gerardojbaez\PhpCheckup\Manager;
-use Gerardojbaez\PhpCheckup\Status;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 final class ManagerTest extends TestCase
@@ -11,50 +11,44 @@ final class ManagerTest extends TestCase
     public function testCreateInstanceWithChecksArray()
     {
         // Arrange
-        $mock = $this->createMock(Check::class);
+        $check = $this->createCheck();
 
         // Act
-        $manager = new Manager([$mock]);
+        $manager = new Manager([$check]);
 
         // Assert
         $this->assertCount(1, $checks = $manager->checks());
-        $this->assertSame($mock, $checks[0]);
+        $this->assertSame($check, $checks[0]);
     }
 
     public function testAddCheck()
     {
         // Arrange
-        /** @var Check $mock */
-        $mock = $this->createMock(Check::class);
+        $check = $this->createCheck();
 
         $manager = new Manager;
 
         // Act
-        $return = $manager->add($mock);
+        $return = $manager->add($check);
 
         // Assert
         $this->assertSame($manager, $return);
         $this->assertCount(1, $checks = $manager->checks());
-        $this->assertSame($mock, $checks[0]);
+        $this->assertSame($check, $checks[0]);
     }
 
     public function testGetNewManagerForChecksInGroup()
     {
         // Arrange
-        $first = $this->createMock(Check::class);
-        $first->expects($this->once())
-             ->method('groups')
-             ->will($this->returnValue(['a', 'b']));
+        $first = $this->createCheck();
+        $first->group('a');
 
-        $second = $this->createMock(Check::class);
-        $second->expects($this->once())
-             ->method('groups')
-             ->will($this->returnValue(['a', 'b']));
+        $second = $this->createCheck();
+        $second->group('a');
+        $second->group('b');
 
-        $third = $this->createMock(Check::class);
-        $third->expects($this->once())
-             ->method('groups')
-             ->will($this->returnValue(['b']));
+        $third = $this->createCheck();
+        $third->group('c');
 
         $manager = new Manager([
             $first, $second, $third
@@ -74,20 +68,16 @@ final class ManagerTest extends TestCase
     public function testGetNewManagerForChecksInGroups()
     {
         // Arrange
-        $first = $this->createMock(Check::class);
-        $first->expects($this->once())
-             ->method('groups')
-             ->will($this->returnValue(['b']));
+        $first = $this->createCheck();
+        $first->group('b');
 
-        $second = $this->createMock(Check::class);
-        $second->expects($this->once())
-             ->method('groups')
-             ->will($this->returnValue(['c', 'e']));
+        $second = $this->createCheck();
+        $second->group('b');
+        $second->group('c');
+        $second->group('d');
 
-        $third = $this->createMock(Check::class);
-        $third->expects($this->once())
-             ->method('groups')
-             ->will($this->returnValue(['f']));
+        $third = $this->createCheck();
+        $third->group('e');
 
         $manager = new Manager([
             $first, $second, $third
@@ -132,22 +122,27 @@ final class ManagerTest extends TestCase
 
     public function isPassingProvider()
     {
-        $passing[0] = $this->createMock(Check::class);
-        $passing[0]->method('check')->will($this->returnValue(new CheckResult(Status::passing(), '')));
-
-        $passing[1] = $this->createMock(Check::class);
-        $passing[1]->method('check')->will($this->returnValue(new CheckResult(Status::passing(), '')));
-
-        $passing[2] = $this->createMock(Check::class);
-        $passing[2]->method('check')->will($this->returnValue(new CheckResult(Status::passing(), '')));
+        $passing = [
+            $this->createCheck(true),
+            $this->createCheck(true),
+            $this->createCheck(true),
+        ];
 
         $notPassing = $passing;
-        $notPassing[3] = $this->createMock(Check::class);
-        $notPassing[3]->method('check')->will($this->returnValue(new CheckResult(Status::failing(), '')));
+        $notPassing[3] = $this->createCheck(false);
 
         return [
             [true, $passing],
             [false, $notPassing]
         ];
+    }
+
+    public function createCheck(bool $isPassing = true)
+    {
+        /** @var CheckInterface|MockObject $check */
+        $check = $this->createMock(CheckInterface::class);
+        $check->method('check')->will($this->returnValue($isPassing));
+
+        return new Check('My check', $check);
     }
 }

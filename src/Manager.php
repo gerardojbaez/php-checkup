@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Gerardojbaez\PhpCheckup;
 
-use Gerardojbaez\PhpCheckup\Contracts\Check;
+use Gerardojbaez\PhpCheckup\Checks\Check;
 use Gerardojbaez\PhpCheckup\Contracts\Manager as ManagerInterface;
 
 final class Manager implements ManagerInterface
@@ -77,7 +77,7 @@ final class Manager implements ManagerInterface
     {
         return new static(array_filter(
             $this->checks, static function ($check) use ($groups) {
-                return count(array_intersect($check->groups(), $groups));
+                return count(array_intersect($check->getGroups(), $groups));
             }
         ));
     }
@@ -90,7 +90,7 @@ final class Manager implements ManagerInterface
     public function passing(): int
     {
         return array_sum(array_map(static function ($check) {
-            return $check->check()->status()->isPassing() ? 1 : 0;
+            return $check->check()->isPassing() ? 1 : 0;
         }, $this->checks));
     }
 

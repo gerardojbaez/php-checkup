@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use SlevomatCodingStandard\Sniffs\Functions\UnusedParameterSniff;
+use ObjectCalisthenics\Sniffs\Metrics\MethodPerClassLimitSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\DisallowArrayTypeHintSyntaxSniff;
 
 return [
@@ -68,9 +68,9 @@ return [
     ],
 
     'config' => [
-        UnusedParameterSniff::class => [
+        MethodPerClassLimitSniff::class => [
             'exclude' => [
-                'src/Status.php',
+                'src/Checks/Check.php',
             ],
         ],
     ],

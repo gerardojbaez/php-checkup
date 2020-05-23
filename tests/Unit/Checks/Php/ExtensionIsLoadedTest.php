@@ -24,23 +24,7 @@ function extension_loaded($name) {
 final class PhpExtensionIsLoadedTest extends TestCase
 {
     /** @dataProvider checkProvider */
-    public function testName($status, $message, $extension)
-    {
-        // Arrange
-        $check = new ExtensionIsLoaded($extension);
-
-        // Act
-        $name = $check->name();
-
-        // Assert
-        $this->assertSame(
-            sprintf('Check whether PHP extension "%s" is loaded', $extension),
-            $name
-        );
-    }
-
-    /** @dataProvider checkProvider */
-    public function testCheck($status, $message, $extension)
+    public function testCheck($expected, $extension)
     {
         // Arrange
         $check = new ExtensionIsLoaded($extension);
@@ -49,16 +33,14 @@ final class PhpExtensionIsLoadedTest extends TestCase
         $result = $check->check();
 
         // Assert
-        $this->assertInstanceOf(CheckResult::class, $result);
-        $this->assertTrue($status->equals($result->status()));
-        $this->assertSame($message, $result->message());
+        $this->assertSame($expected, $result);
     }
 
     public function checkProvider()
     {
         return [
-            [Status::passing(), 'PHP extension "mbstring" was found.', 'mbstring'],
-            [Status::failing(), 'PHP extension "mailparse" was not found.', 'mailparse']
+            [true, 'mbstring'],
+            [false, 'mailparse']
         ];
     }
 }

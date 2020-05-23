@@ -7,11 +7,25 @@ namespace Gerardojbaez\PhpCheckup;
 final class CheckResult
 {
     /**
+     * Check's name.
+     *
+     * @var string
+     */
+    private $name;
+
+    /**
      * Check's final status.
      *
-     * @var Status
+     * @var bool
      */
-    private $status;
+    private $passing;
+
+    /**
+     * The check type.
+     *
+     * @var Type
+     */
+    private $type;
 
     /**
      * The check result message.
@@ -23,18 +37,48 @@ final class CheckResult
     /**
      * Create a new check result instance.
      */
-    public function __construct(Status $status, string $message)
-    {
-        $this->status = $status;
+    public function __construct(
+        string $name,
+        Type $type,
+        bool $passing,
+        string $message
+    ) {
+        $this->name = $name;
+        $this->type = $type;
+        $this->passing = $passing;
         $this->message = $message;
     }
 
     /**
-     * Get the status.
+     * Get the check's name.
      */
-    public function status(): Status
+    public function name(): string
     {
-        return $this->status;
+        return $this->name;
+    }
+
+    /**
+     * Whether the check is passing.
+     */
+    public function isPassing(): bool
+    {
+        return $this->passing;
+    }
+
+    /**
+     * Whether the check is failing.
+     */
+    public function isFailing(): bool
+    {
+        return $this->passing === false;
+    }
+
+    /**
+     * Get the check type.
+     */
+    public function type(): Type
+    {
+        return $this->type;
     }
 
     /**

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Gerardojbaez\PhpCheckup\Contracts;
 
+use Gerardojbaez\PhpCheckup\Checks\Check;
+
 /**
  * Interface for checks managers to implement.
  *
@@ -11,13 +13,6 @@ namespace Gerardojbaez\PhpCheckup\Contracts;
  */
 interface Manager
 {
-    /**
-     * Create a new check manager instance.
-     *
-     * @param Check[] $checks
-     */
-    public function __construct(array $checks = []);
-
     /**
      * Set or get the check groups.
      *

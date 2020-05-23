@@ -11,14 +11,26 @@ use \Gerardojbaez\PhpCheckup\Manager;
 $checks = new Manager;
 
 // Register checks
-$checks->add((new ExtensionIsLoaded('mbstring'))->addGroup('requirements'));
-$checks->add((new ExtensionIsLoaded('openssl'))->addGroup('requirements'));
-$checks->add((new ExtensionIsLoaded('mailparse'))->addGroup('suggestions'));
+$checks->add(
+    (new Check('Required PHP extension "mbstring" is installed', new ExtensionIsLoaded('mbstring')))
+        ->group('requirements')
+        ->passing('The extension installed')
+        ->failing('The extension is not installed. Please install or enable it before proceeding.')
+        ->critical()
+);
+
+$checks->add(
+    (new Check('Recommended PHP extension "mailparse" is installed', new ExtensionIsLoaded('mailparse')))
+        ->group('recommended')
+        ->passing('The extension installed')
+        ->failing('The extension is not installed, while it is not required, we recommend you to install or enable it for a proper inbound-email handling.')
+        ->warning()
+);
 
 // Run checks
-$checks->passing();
-$checks->group('requirements')->passing();
-$checks->group('suggestions')->passing();
+$checks->isPassing();
+$checks->group('requirements')->isPassing();
+$checks->group('suggestions')->isPassing();
 ```
 
 ## Why
