@@ -7,6 +7,11 @@ namespace Gerardojbaez\PhpCheckup;
 use Gerardojbaez\PhpCheckup\Checks\Check;
 use Gerardojbaez\PhpCheckup\Contracts\Manager as ManagerInterface;
 
+/**
+ * Check's manager class.
+ *
+ * @since 0.1.0
+ */
 final class Manager implements ManagerInterface
 {
     /**

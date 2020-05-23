@@ -6,12 +6,19 @@ namespace Gerardojbaez\PhpCheckup\Checks\Php;
 
 use Gerardojbaez\PhpCheckup\Contracts\Check;
 
+/**
+ * Check whether a PHP extension is loaded.
+ *
+ * @since 0.1.0
+ */
 final class ExtensionIsLoaded implements Check
 {
     /**
      * The extension name to be tested.
      *
      * @var string
+     *
+     * @since 0.1.0
      */
     private $extension;
 
@@ -25,6 +32,8 @@ final class ExtensionIsLoaded implements Check
 
     /**
      * Run check.
+     *
+     * @since 0.1.0
      */
     public function check(): bool
     {

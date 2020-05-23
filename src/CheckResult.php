@@ -4,17 +4,26 @@ declare(strict_types=1);
 
 namespace Gerardojbaez\PhpCheckup;
 
+/**
+ * Holds a check's result.
+ *
+ * @since 0.1.0
+ */
 final class CheckResult
 {
     /**
      * Check's name.
+     *
+     * @since 0.1.0
      *
      * @var string
      */
     private $name;
 
     /**
-     * Check's final status.
+     * Whether the check is passing.
+     *
+     * @since 0.1.0
      *
      * @var bool
      */
@@ -23,12 +32,16 @@ final class CheckResult
     /**
      * The check type.
      *
+     * @since 0.1.0
+     *
      * @var Type
      */
     private $type;
 
     /**
      * The check result message.
+     *
+     * @since 0.1.0
      *
      * @var string
      */
@@ -51,6 +64,8 @@ final class CheckResult
 
     /**
      * Get the check's name.
+     *
+     * @since 0.1.0
      */
     public function name(): string
     {
@@ -59,6 +74,8 @@ final class CheckResult
 
     /**
      * Whether the check is passing.
+     *
+     * @since 0.1.0
      */
     public function isPassing(): bool
     {
@@ -67,6 +84,8 @@ final class CheckResult
 
     /**
      * Whether the check is failing.
+     *
+     * @since 0.1.0
      */
     public function isFailing(): bool
     {
@@ -75,6 +94,8 @@ final class CheckResult
 
     /**
      * Get the check type.
+     *
+     * @since 0.1.0
      */
     public function type(): Type
     {
@@ -83,6 +104,8 @@ final class CheckResult
 
     /**
      * Get the message.
+     *
+     * @since 0.1.0
      */
     public function message(): string
     {

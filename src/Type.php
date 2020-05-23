@@ -6,14 +6,29 @@ namespace Gerardojbaez\PhpCheckup;
 
 /**
  * Check's type value object.
+ *
+ * @since 0.1.0
  */
 final class Type
 {
+    /**
+     * @since 0.1.0
+     */
     private const TYPE_CRITICAL = 'critical';
+
+    /**
+     * @since 0.1.0
+     */
     private const TYPE_WARNING = 'warning';
+
+    /**
+     * @since 0.1.0
+     */
     private const TYPE_INFO = 'informational';
 
     /**
+     * @since 0.1.0
+     *
      * @var string
      */
     private $type;
@@ -26,6 +41,11 @@ final class Type
         $this->type = $type;
     }
 
+    /**
+     * Cast instance to string.
+     *
+     * @since 0.1.0
+     */
     public function __toString(): string
     {
         return $this->type;
@@ -33,6 +53,8 @@ final class Type
 
     /**
      * Create new critical type instance.
+     *
+     * @since 0.1.0
      */
     public static function critical(): Type
     {
@@ -41,6 +63,8 @@ final class Type
 
     /**
      * Create new warning type instance.
+     *
+     * @since 0.1.0
      */
     public static function warning(): Type
     {
@@ -49,6 +73,8 @@ final class Type
 
     /**
      * Create new informational type instance.
+     *
+     * @since 0.1.0
      */
     public static function informational(): Type
     {
@@ -57,6 +83,8 @@ final class Type
 
     /**
      * Alias for Type::informational().
+     *
+     * @since 0.1.0
      */
     public static function info(): Type
     {
@@ -65,6 +93,8 @@ final class Type
 
     /**
      * Determine whether type is critical.
+     *
+     * @since 0.1.0
      */
     public function isCritical(): bool
     {
@@ -73,6 +103,8 @@ final class Type
 
     /**
      * Determine whether type is warning.
+     *
+     * @since 0.1.0
      */
     public function isWarning(): bool
     {
@@ -81,6 +113,8 @@ final class Type
 
     /**
      * Determine whether type is informational.
+     *
+     * @since 0.1.0
      */
     public function isInformational(): bool
     {
@@ -89,6 +123,8 @@ final class Type
 
     /**
      * Get the underlying type value.
+     *
+     * @since 0.1.0
      */
     public function getType(): string
     {
