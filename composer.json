@@ -2,7 +2,7 @@
     "name": "gerardojbaez/php-checkup",
     "description": "Framework agnostic application health and requirement checks.",
     "type": "library",
-    "license": "ISC",
+    "license": "MIT",
     "authors": [
         {
             "name": "Gerardo Baez",
