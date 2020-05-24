@@ -26,6 +26,8 @@ final class MinimumMemory implements Check
     /**
      * The config repository instance.
      *
+     * @since 0.1.0
+     *
      * @var Repository
      */
     private $config;
@@ -61,6 +63,8 @@ final class MinimumMemory implements Check
     /**
      * Get data related to this check, which can be used to
      * format check message.
+     *
+     * @since 0.1.0
      *
      * @return string|int[]
      */
