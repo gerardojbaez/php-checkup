@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Gerardojbaez\PhpCheckup\Repositories\Php\Config;
 
-use Gerardojbaez\PhpCheckup\Contracts\Php\Config\Repository as Contract;
+use Gerardojbaez\PhpCheckup\Contracts\Repositories\Php\Config\Repository as Contract;
 
 final class Repository implements Contract
 {

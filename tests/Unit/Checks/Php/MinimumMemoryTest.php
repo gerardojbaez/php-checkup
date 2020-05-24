@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\MockObject\MockObject;
 use Gerardojbaez\PhpCheckup\Checks\Php\MinimumMemory;
-use Gerardojbaez\PhpCheckup\Contracts\Php\Config\Repository;
+use Gerardojbaez\PhpCheckup\Contracts\Repositories\Php\Config\Repository;
 use PHPUnit\Framework\TestCase;
 
 final class MinimumMemoryTest extends TestCase

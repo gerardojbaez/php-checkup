@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Gerardojbaez\PhpCheckup\Checks\Php;
 
 use Gerardojbaez\PhpCheckup\Contracts\Check;
-use Gerardojbaez\PhpCheckup\Contracts\Php\Config\Repository;
+use Gerardojbaez\PhpCheckup\Contracts\Repositories\Php\Config\Repository;
 
 /**
  * Check whether PHP's memory limit meets a minimum.

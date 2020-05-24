@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Gerardojbaez\PhpCheckup\Contracts\Php\Config;
+namespace Gerardojbaez\PhpCheckup\Contracts\Repositories\Php\Config;
 
 /**
  * @since 0.1.0
