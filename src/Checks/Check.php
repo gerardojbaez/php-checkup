@@ -156,7 +156,26 @@ final class Check
             $this->name,
             $this->type,
             $passing = $this->check->check(),
-            $passing ? $this->passingMessage : $this->failingMessage
+            $this->getMessage($passing)
+        );
+    }
+
+    /**
+     * Get formated message based on result.
+     *
+     * @since 0.1.0
+     */
+    private function getMessage(bool $isPassing): string
+    {
+        $msg = $isPassing ? $this->passingMessage : $this->failingMessage;
+        $keys = array_map(static function ($key) {
+            return ":${key}";
+        }, array_keys($this->check->data()));
+
+        return str_replace(
+            $keys,
+            array_values($this->check->data()),
+            $msg
         );
     }
 }

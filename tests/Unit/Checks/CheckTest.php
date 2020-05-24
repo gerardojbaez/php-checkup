@@ -88,13 +88,17 @@ final class CheckTest extends TestCase
     {
         // Arrange
         $check = $this->createCheck(false);
-        $check->failing('My custom failing message');
+        $check->failing('My custom failing message - :placeholder');
 
         // Act
         $result = $check->check();
 
         // Assert
-        $this->assertSame('My custom failing message', $result->message());
+        $this->assertSame(
+            'My custom failing message - value',
+            $result->message()
+        );
+
         $this->assertTrue($result->isFailing());
     }
 
@@ -147,6 +151,11 @@ final class CheckTest extends TestCase
         $mock->expects($this->any())
             ->method('check')
             ->will($this->returnValue($isPassing));
+        $mock->expects($this->any())
+            ->method('data')
+            ->will($this->returnValue([
+                'placeholder' => 'value'
+            ]));
 
         $check = new Check('My check', $mock);
 

@@ -39,4 +39,15 @@ final class ExtensionIsLoaded implements Check
     {
         return extension_loaded($this->extension);
     }
+
+    /**
+     * Get data related to this check, which can be used to
+     * format check message.
+     *
+     * @return string|int[]
+     */
+    public function data(): array
+    {
+        return [];
+    }
 }

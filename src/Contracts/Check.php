@@ -17,4 +17,12 @@ interface Check
      * @since 0.1.0
      */
     public function check(): bool;
+
+    /**
+     * Get data related to this check, which can be used to
+     * format check message.
+     *
+     * @return string|int[]
+     */
+    public function data(): array;
 }

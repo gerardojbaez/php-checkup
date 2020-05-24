@@ -23,6 +23,18 @@ function extension_loaded($name) {
 
 final class PhpExtensionIsLoadedTest extends TestCase
 {
+    public function testData()
+    {
+        // Arrange
+        $check = new ExtensionIsLoaded('ext');
+
+        // Act
+        $result = $check->data();
+
+        // Assert
+        $this->assertSame([], $result);
+    }
+
     /** @dataProvider checkProvider */
     public function testCheck($expected, $extension)
     {
