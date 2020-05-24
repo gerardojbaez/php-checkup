@@ -8,7 +8,7 @@ Framework agnostic application health and requirement checks.
 use \Gerardojbaez\PhpCheckup\Checks\Php\ExtensionIsLoaded;
 use \Gerardojbaez\PhpCheckup\Checks\Php\MinimumMemory;
 use \Gerardojbaez\PhpCheckup\Manager;
-use Gerardojbaez\PhpCheckup\Contracts\Php\Config\Repository;
+use Gerardojbaez\PhpCheckup\Repositories\Php\Config\Config;
 
 $checks = new Manager;
 
@@ -30,7 +30,7 @@ $checks->add(
 );
 
 $checks->add(
-    (new Check('50MB PHP\'s minimum memory limit', new MinimumMemory(1048576 * 50, new Repository)))
+    (new Check('50MB PHP\'s minimum memory limit', new MinimumMemory(1048576 * 50, new Config)))
         ->group('recommended')
         ->passing('You are using :memory_limit')
         ->failing('Please set PHP\'s memory_limit to at least 50MB. For example memory_limit=50M. The current value is memory_limit=:memory_limit.')
