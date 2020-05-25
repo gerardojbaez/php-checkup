@@ -4,8 +4,9 @@
 
 Framework agnostic application health and requirement checks.
 
-![Build Status](https://travis-ci.org/gerardojbaez/php-checkup.svg?branch=master)
-![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)
+[![Build Status](https://travis-ci.org/gerardojbaez/php-checkup.svg?branch=master)](https://travis-ci.org/gerardojbaez/php-checkup.svg?branch=master)
+[![Coverage](https://codecov.io/gh/gerardojbaez/php-checkup/branch/master/graph/badge.svg)](https://codecov.io/gh/gerardojbaez/php-checkup)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)
 
 ## TL;DR
 
