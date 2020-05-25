@@ -24,23 +24,24 @@ final class MinimumMemory implements Check
     private $memory;
 
     /**
-     * The config repository instance.
+     * The current memory limit value.
      *
-     * @since 0.1.0
+     * @since 0.2.0
      *
-     * @var Repository
+     * @var string
      */
-    private $config;
+    private $actualMemory;
 
     /**
      * Create a new check instance.
      *
      * @param int $memory The minimum allowed memory, in Bytes.
+     * @param string $actualMemory The current memory_limit value.
      */
-    public function __construct(int $memory, Repository $config)
+    public function __construct(int $memory, string $actualMemory)
     {
         $this->memory = $memory;
-        $this->config = $config;
+        $this->actualMemory = $actualMemory;
     }
 
     /**
@@ -50,7 +51,7 @@ final class MinimumMemory implements Check
      */
     public function check(): bool
     {
-        $limit = $this->getMemoryLimit();
+        $limit = $this->actualMemory;
 
         // If limit is unlimited, there's nothing else to do here...
         if ((int) $limit === -1) {
@@ -71,18 +72,9 @@ final class MinimumMemory implements Check
     public function data(): array
     {
         return [
-            'memory_limit' => $this->getMemoryLimit(),
+            'target_memory' => $this->memory,
+            'memory_limit' => $this->actualMemory,
         ];
-    }
-
-    /**
-     * Get the memory limit currently set.
-     *
-     * @since 0.1.0
-     */
-    private function getMemoryLimit(): string
-    {
-        return $this->config->get('memory_limit');
     }
 
     /**

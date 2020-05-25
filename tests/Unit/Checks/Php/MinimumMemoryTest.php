@@ -1,8 +1,6 @@
 <?php
 
-use PHPUnit\Framework\MockObject\MockObject;
 use Gerardojbaez\PhpCheckup\Checks\Php\MinimumMemory;
-use Gerardojbaez\PhpCheckup\Contracts\Repositories\Php\Config\Repository;
 use PHPUnit\Framework\TestCase;
 
 final class MinimumMemoryTest extends TestCase
@@ -11,9 +9,7 @@ final class MinimumMemoryTest extends TestCase
     public function testCheck($expected, $minMemory, $actualMemory)
     {
         // Arrange
-        $repository = $this->createRepository($actualMemory);
-
-        $check = new MinimumMemory($minMemory, $repository);
+        $check = new MinimumMemory($minMemory, $actualMemory);
 
         // Act
         $actual = $check->check();
@@ -26,9 +22,7 @@ final class MinimumMemoryTest extends TestCase
     public function testData($expected, $minMemory, $actualMemory)
     {
         // Arrange
-        $repository = $this->createRepository($actualMemory);
-
-        $check = new MinimumMemory($minMemory, $repository);
+        $check = new MinimumMemory($minMemory, $actualMemory);
 
         // Act
         $actual = $check->data();
@@ -87,21 +81,9 @@ final class MinimumMemoryTest extends TestCase
     public function dataProvider()
     {
         return [
-            [['memory_limit' => '-1'], 1024, '-1'], // data set #0
-            [['memory_limit' => '-1'], 1024, '-1'], // data set #1
-            [['memory_limit' => '1024'], 1024, '1024'], // data set #2
+            [['target_memory' => 1024, 'memory_limit' => '-1'], 1024, '-1'], // data set #0
+            [['target_memory' => 1024, 'memory_limit' => '-1'], 1024, '-1'], // data set #1
+            [['target_memory' => 1024, 'memory_limit' => '1024'], 1024, '1024'], // data set #2
         ];
-    }
-
-    private function createRepository($actualMemory)
-    {
-        /** @var Repository|MockObject */
-        $repository = $this->createMock(Repository::class);
-        $repository->expects($this->once())
-            ->method('get')
-            ->with($this->equalTo('memory_limit'))
-            ->will($this->returnValue((string) $actualMemory));
-
-        return $repository;
     }
 }
