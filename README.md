@@ -4,6 +4,9 @@
 
 Framework agnostic application health and requirement checks.
 
+![Build Status](https://travis-ci.org/gerardojbaez/php-checkup.svg?branch=master)
+![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)
+
 ## TL;DR
 
 ```php
