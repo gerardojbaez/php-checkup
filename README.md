@@ -27,7 +27,9 @@ $checks->isPassing();
 
 ## Why
 
-When developing self-hosted applications, it is common to provide users with a check-list of things that they must complete before installing an application on their servers. Or, you give them an easy way to view a global picture of how the application and server are performing at any given time — improving error debugging and communication with developers. PhpCheckup gives developers a quick and easy way to build such check-lists as a stand-alone package or directly integrated into their applications.
+Application health-checks is a great way to see how an application is performing at any given time and to see what needs immediate attention. They also improve communication by allowing users to quickly and easily share important environment-specific information with developers.
+
+PHP Checkup aims to provide the foundation for such functionality by giving developers a list of common checks, a quick way to add new custom checks, and an easy way to run all or a portion of them.
 
 ## Use cases
 - Application pre-installation checks
