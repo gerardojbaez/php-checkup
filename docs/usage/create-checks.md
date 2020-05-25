@@ -31,3 +31,7 @@ class MyCheck implements Check
     }
 }
 ```
+
+And [register it](/usage/check-list.html) as you register any other check.
+
+The `check()` method is where you will place the check's logic, and return `true` when it passes, or `false` otherwise. The `data()` method is used to format the check's passing or failing message.

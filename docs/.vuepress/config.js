@@ -8,6 +8,7 @@ module.exports = {
         sidebar: [
             {
                 title: 'Getting Started',
+                collapsable: false,
                 children: [
                     'getting-started/introduction',
                     'getting-started/installation'
@@ -15,9 +16,11 @@ module.exports = {
             },
             {
                 title: 'Usage',
+                collapsable: false,
                 children: [
                     'usage/check-list',
-                    'usage/create-checks'
+                    'usage/create-checks',
+                    'usage/builtin-checks'
                 ]
             }
         ]
