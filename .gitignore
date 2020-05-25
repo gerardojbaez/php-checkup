@@ -1,4 +1,6 @@
 vendor
+docs/.vuepress/dist
+node_modules
 tests/.reports
 .phpunit.result.cache
 .vscode
