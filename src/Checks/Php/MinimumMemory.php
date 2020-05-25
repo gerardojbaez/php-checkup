@@ -76,7 +76,7 @@ final class MinimumMemory implements Check
     }
 
     /**
-     * Get the memory limit currenlty set.
+     * Get the memory limit currently set.
      *
      * @since 0.1.0
      */
