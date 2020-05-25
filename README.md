@@ -1,3 +1,5 @@
+![Banner](./art/banner.png)
+
 # PHP Checkup
 
 Framework agnostic application health and requirement checks.
