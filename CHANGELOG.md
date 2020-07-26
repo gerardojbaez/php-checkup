@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0] - 2020-07-26
+
+### Added
+
+- `Gerardojbaez\PhpCheckup\Checks\Filesystem\Writable`
+
 ## [0.2.0] - 2020-05-25
 
 ### Changed

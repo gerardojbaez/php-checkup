@@ -4,27 +4,27 @@ declare(strict_types=1);
 
 // Use the same namespace as the class under test so we can
 // mock its function dependencies.
-namespace Gerardojbaez\PhpCheckup\Checks\Php;
+namespace Gerardojbaez\PhpCheckup\Checks\Filesystem;
 
 use PHPUnit\Framework\TestCase;
-use Gerardojbaez\PhpCheckup\Checks\Php\ExtensionIsLoaded;
+use Gerardojbaez\PhpCheckup\Checks\Filesystem\Writable;
 
 /**
  * Mock PHP function.
  *
- * @param string $name
+ * @param string $path
  * @return bool
  */
-function extension_loaded($name) {
-    return $name === 'mbstring';
+function is_writable($path) {
+    return $path === 'storage';
 }
 
-final class PhpExtensionIsLoadedTest extends TestCase
+final class WritableTest extends TestCase
 {
     public function testData()
     {
         // Arrange
-        $check = new ExtensionIsLoaded('ext');
+        $check = new Writable('storage');
 
         // Act
         $result = $check->data();
@@ -34,10 +34,10 @@ final class PhpExtensionIsLoadedTest extends TestCase
     }
 
     /** @dataProvider checkProvider */
-    public function testCheck($expected, $extension)
+    public function testCheck($expected, $path)
     {
         // Arrange
-        $check = new ExtensionIsLoaded($extension);
+        $check = new Writable($path);
 
         // Act
         $result = $check->check();
@@ -49,8 +49,8 @@ final class PhpExtensionIsLoadedTest extends TestCase
     public function checkProvider()
     {
         return [
-            [true, 'mbstring'],
-            [false, 'mailparse']
+            [true, 'storage'],
+            [false, '.env']
         ];
     }
 }
