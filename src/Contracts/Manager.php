@@ -34,8 +34,6 @@ interface Manager
     /**
      * Get checks corresponding to the provided group.
      *
-     * This method is an alias for groups(['group']).
-     *
      * @since 0.1.0
      *
      * @return static
