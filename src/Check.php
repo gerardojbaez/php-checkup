@@ -90,7 +90,7 @@ final class Check
     /**
      * Add a new group.
      */
-    public function addGroup(string $name): Check
+    public function group(string $name): Check
     {
         $this->groups[] = $name;
 

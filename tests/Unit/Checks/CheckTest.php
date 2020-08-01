@@ -34,8 +34,8 @@ final class CheckTest extends TestCase
     {
         // Arrange
         $check = $this->createCheck();
-        $check->addGroup('one');
-        $check->addGroup('two');
+        $check->group('one');
+        $check->group('two');
 
         // Act
         $actual = $check->getGroups();

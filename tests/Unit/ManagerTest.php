@@ -41,14 +41,14 @@ final class ManagerTest extends TestCase
     {
         // Arrange
         $first = $this->createCheck();
-        $first->addGroup('a');
+        $first->group('a');
 
         $second = $this->createCheck();
-        $second->addGroup('a');
-        $second->addGroup('b');
+        $second->group('a');
+        $second->group('b');
 
         $third = $this->createCheck();
-        $third->addGroup('c');
+        $third->group('c');
 
         $manager = new Manager([
             $first, $second, $third
@@ -69,15 +69,15 @@ final class ManagerTest extends TestCase
     {
         // Arrange
         $first = $this->createCheck();
-        $first->addGroup('b');
+        $first->group('b');
 
         $second = $this->createCheck();
-        $second->addGroup('b');
-        $second->addGroup('c');
-        $second->addGroup('d');
+        $second->group('b');
+        $second->group('c');
+        $second->group('d');
 
         $third = $this->createCheck();
-        $third->addGroup('e');
+        $third->group('e');
 
         $manager = new Manager([
             $first, $second, $third
