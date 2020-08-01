@@ -5,6 +5,7 @@
 ### Changed
 
 - `Gerardojbaez\PhpCheckup\Checks\Check` changed to `Gerardojbaez\PhpCheckup\Check`
+- `Gerardojbaez\PhpCheckup\Check::group()` changed to `Gerardojbaez\PhpCheckup\Check::addGroup()`
 
 ## [0.4.0] - 2020-07-26
 
