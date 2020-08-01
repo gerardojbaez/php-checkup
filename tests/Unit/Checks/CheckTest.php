@@ -1,6 +1,6 @@
 <?php
 
-use Gerardojbaez\PhpCheckup\Checks\Check;
+use Gerardojbaez\PhpCheckup\Check;
 use Gerardojbaez\PhpCheckup\Contracts\Check as CheckInterface;
 use Gerardojbaez\PhpCheckup\Type;
 use PHPUnit\Framework\MockObject\MockObject;

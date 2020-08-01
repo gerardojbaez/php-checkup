@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Gerardojbaez\PhpCheckup\Checks;
+namespace Gerardojbaez\PhpCheckup;
 
 use Gerardojbaez\PhpCheckup\CheckResult;
 use Gerardojbaez\PhpCheckup\Contracts\Check as CheckInterface;

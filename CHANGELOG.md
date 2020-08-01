@@ -1,5 +1,11 @@
 # Changelog
 
+## [unreleased]
+
+### Changed
+
+- `Gerardojbaez\PhpCheckup\Checks\Check` changed to `Gerardojbaez\PhpCheckup\Check`
+
 ## [0.4.0] - 2020-07-26
 
 ### Added

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Gerardojbaez\PhpCheckup\Contracts;
 
-use Gerardojbaez\PhpCheckup\Checks\Check;
+use Gerardojbaez\PhpCheckup\Check;
 
 /**
  * Interface for checks managers to implement.
