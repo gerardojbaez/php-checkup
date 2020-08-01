@@ -21,5 +21,6 @@
     <logging>
         <log type="coverage-html" target="./tests/.reports/codecoverage" lowUpperBound="50" highLowerBound="80"/>
         <log type="testdox-html" target="./tests/.reports/testdox.html" />
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
     </logging>
 </phpunit>
