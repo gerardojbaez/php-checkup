@@ -18,12 +18,10 @@ final class Writable implements Check
      *
      * @var string
      */
-    protected $path;
+    private $path;
 
     /**
      * Create a new check instance.
-     *
-     * @param string $path
      */
     public function __construct(string $path)
     {
