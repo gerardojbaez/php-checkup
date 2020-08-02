@@ -94,47 +94,57 @@ final class ManagerTest extends TestCase
         $this->assertSame($second, $pluralChecks[1]);
     }
 
-    /** @dataProvider isPassingProvider */
-    public function testPassingReturnsNumberOfPassingChecks($isPassing, $checks)
+    public function testGetNewManagerForCheckCode()
     {
         // Arrange
-        $manager = new Manager($checks);
+        $first = $this->createCheck();
+        $first->code('a');
+
+        $second = $this->createCheck();
+        $second->code('b');
+
+        $third = $this->createCheck();
+        $third->code('c');
+
+        $manager = new Manager([
+            $first, $second, $third
+        ]);
 
         // Act
-        $actual = $manager->passing();
+        $actual = $manager->code('a');
 
         // Assert
-        $this->assertSame(3, $actual);
+        $this->assertInstanceOf(Manager::class, $actual);
+
+        $this->assertCount(1, $checks = $actual->checks());
+        $this->assertSame($first, $checks[0]);
     }
 
-    /** @dataProvider isPassingProvider */
-    public function testIsPassing($expected, $checks)
+    public function testGetNewManagerForCheckCodes()
     {
         // Arrange
-        $manager = new Manager($checks);
+        $first = $this->createCheck();
+        $first->code('a');
+
+        $second = $this->createCheck();
+        $second->code('b');
+
+        $third = $this->createCheck();
+        $third->code('c');
+
+        $manager = new Manager([
+            $first, $second, $third
+        ]);
 
         // Act
-        $actual = $manager->isPassing();
+        $actual = $manager->codes(['a', 'b']);
 
         // Assert
-        $this->assertSame($expected, $actual);
-    }
+        $this->assertInstanceOf(Manager::class, $actual);
 
-    public function isPassingProvider()
-    {
-        $passing = [
-            $this->createCheck(true),
-            $this->createCheck(true),
-            $this->createCheck(true),
-        ];
-
-        $notPassing = $passing;
-        $notPassing[3] = $this->createCheck(false);
-
-        return [
-            [true, $passing],
-            [false, $notPassing]
-        ];
+        $this->assertCount(2, $checks = $actual->checks());
+        $this->assertSame($first, $checks[0]);
+        $this->assertSame($second, $checks[1]);
     }
 
     public function createCheck(bool $isPassing = true)

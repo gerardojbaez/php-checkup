@@ -54,7 +54,7 @@ final class CheckTest extends TestCase
 
         // Assert
         $this->assertSame('Passing', $result->message());
-        $this->assertTrue($result->isPassing());
+        $this->assertTrue($result->status()->isPassing());
     }
 
     public function testPassingWithCustomMessage()
@@ -68,7 +68,7 @@ final class CheckTest extends TestCase
 
         // Assert
         $this->assertSame('My custom passing message', $result->message());
-        $this->assertTrue($result->isPassing());
+        $this->assertTrue($result->status()->isPassing());
     }
 
     public function testFailingWithDefaultMessage()
@@ -81,7 +81,7 @@ final class CheckTest extends TestCase
 
         // Assert
         $this->assertSame('Failing', $result->message());
-        $this->assertTrue($result->isFailing());
+        $this->assertTrue($result->status()->isFailing());
     }
 
     public function testFailingWithCustomMessage()
@@ -99,7 +99,7 @@ final class CheckTest extends TestCase
             $result->message()
         );
 
-        $this->assertTrue($result->isFailing());
+        $this->assertTrue($result->status()->isFailing());
     }
 
     public function testCritical()

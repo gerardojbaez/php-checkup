@@ -21,13 +21,22 @@ final class CheckResult
     private $name;
 
     /**
-     * Whether the check is passing.
+     * Check's code.
      *
      * @since 0.1.0
      *
-     * @var bool
+     * @var string
      */
-    private $passing;
+    private $code;
+
+    /**
+     * The status.
+     *
+     * @since 0.5.0
+     *
+     * @var Status
+     */
+    private $status;
 
     /**
      * The check type.
@@ -52,13 +61,15 @@ final class CheckResult
      */
     public function __construct(
         string $name,
+        ?string $code,
         Type $type,
-        bool $passing,
+        Status $status,
         string $message
     ) {
         $this->name = $name;
+        $this->code = $code;
         $this->type = $type;
-        $this->passing = $passing;
+        $this->status = $status;
         $this->message = $message;
     }
 
@@ -73,23 +84,13 @@ final class CheckResult
     }
 
     /**
-     * Whether the check is passing.
+     * Get the check's code.
      *
-     * @since 0.1.0
+     * @since 0.5.0
      */
-    public function isPassing(): bool
+    public function code(): string
     {
-        return $this->passing;
-    }
-
-    /**
-     * Whether the check is failing.
-     *
-     * @since 0.1.0
-     */
-    public function isFailing(): bool
-    {
-        return $this->passing === false;
+        return $this->code;
     }
 
     /**
@@ -100,6 +101,16 @@ final class CheckResult
     public function type(): Type
     {
         return $this->type;
+    }
+
+    /**
+     * Get the check status.
+     *
+     * @since 0.5.0
+     */
+    public function status(): Status
+    {
+        return $this->status;
     }
 
     /**

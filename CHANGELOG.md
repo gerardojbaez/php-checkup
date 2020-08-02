@@ -2,9 +2,25 @@
 
 ## [unreleased]
 
+### Added
+
+- Ability to set check dependencies.
+- Class `Gerardojbaez\PhpCheckup\Status`
+- Class `Gerardojbaez\PhpCheckup\RunResult`
+- Class `Gerardojbaez\PhpCheckup\Runner`
+- Method `Gerardojbaez\PhpCheckup\CheckResult::status`
+
 ### Changed
 
-- `Gerardojbaez\PhpCheckup\Checks\Check` changed to `Gerardojbaez\PhpCheckup\Check`
+- `Gerardojbaez\PhpCheckup\Checks\Check` renamed to `Gerardojbaez\PhpCheckup\Check`.
+- Parameter #3 of `Gerardojbaez\PhpCheckup\CheckResult::__construct` now accepts a `Gerardojbaez\PhpCheckup\Status` instance instead of a boolean.
+
+### Removed
+
+- Method `Gerardojbaez\PhpCheckup\Manager::isPassing`
+- Method `Gerardojbaez\PhpCheckup\CheckResult::isPassing`
+- Method `Gerardojbaez\PhpCheckup\CheckResult::isFailing`
+- Method `Gerardojbaez\PhpCheckup\Manager::passing`
 
 ## [0.4.0] - 2020-07-26
 

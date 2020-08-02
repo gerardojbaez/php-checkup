@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Gerardojbaez\PhpCheckup;
 
-use Gerardojbaez\PhpCheckup\Check;
 use Gerardojbaez\PhpCheckup\Contracts\Manager as ManagerInterface;
 
 /**
@@ -88,24 +87,28 @@ final class Manager implements ManagerInterface
     }
 
     /**
-     * Get the count of passing checks.
+     * Filter checks by check code.
      *
-     * @since 0.1.0
+     * @since 0.5.0
      */
-    public function passing(): int
+    public function code(string $code): ManagerInterface
     {
-        return array_sum(array_map(static function ($check) {
-            return $check->check()->isPassing() ? 1 : 0;
-        }, $this->checks));
+        return $this->codes([$code]);
     }
 
     /**
-     * Determine whether all checks are passing.
+     * Filter checks by a list of codes.
      *
-     * @since 0.1.0
+     * @since 0.5.0
+     *
+     * @param string[] $codes
      */
-    public function isPassing(): bool
+    public function codes(array $codes): ManagerInterface
     {
-        return $this->passing() === count($this->checks());
+        return new static(array_filter(
+            $this->checks, static function ($check) use ($codes) {
+                return in_array($check->getCode(), $codes);
+            }
+        ));
     }
 }

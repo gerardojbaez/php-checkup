@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Gerardojbaez\PhpCheckup;
 
-use Gerardojbaez\PhpCheckup\CheckResult;
 use Gerardojbaez\PhpCheckup\Contracts\Check as CheckInterface;
-use Gerardojbaez\PhpCheckup\Type;
 
 final class Check
 {
@@ -32,18 +30,29 @@ final class Check
     private $name;
 
     /**
-     * The message to be used if check passes.
+     * The check's code.
      *
      * @var string
      */
-    private $passingMessage = 'Passing';
+    private $code;
 
     /**
-     * The message to be used when check fails.
+     * The check's messages based on status.
      *
-     * @var string
+     * @var string[]
      */
-    private $failingMessage = 'Failing';
+    private $messages = [
+        'passing' => 'Passing',
+        'failing' => 'Failing',
+        'skipping' => 'Skipping',
+    ];
+
+    /**
+     * The check's parent checks.
+     *
+     * @var string[]
+     */
+    private $dependsOn = [];
 
     /**
      * Type of check.
@@ -51,6 +60,13 @@ final class Check
      * @var Type
      */
     private $type;
+
+    /**
+     * Whether check should be skipped.
+     *
+     * @var bool
+     */
+    private $skip = false;
 
     /**
      * Create a check instance.
@@ -72,6 +88,14 @@ final class Check
     }
 
     /**
+     * Get check's code.
+     */
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    /**
      * Get the type of the check.
      */
     public function getType(): Type
@@ -88,6 +112,14 @@ final class Check
     }
 
     /**
+     * @return string[]
+     */
+    public function getDependsOn(): array
+    {
+        return $this->dependsOn;
+    }
+
+    /**
      * Add a new group.
      */
     public function group(string $name): Check
@@ -98,11 +130,31 @@ final class Check
     }
 
     /**
+     * Set check's code.
+     */
+    public function code(string $code): Check
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Set check's dependencies.
+     */
+    public function dependsOn(string $code, string $message = 'Skipping'): Check
+    {
+        $this->dependsOn[$code] = $message;
+
+        return $this;
+    }
+
+    /**
      * Set message to be used when check passes.
      */
     public function passing(string $pass): Check
     {
-        $this->passingMessage = $pass;
+        $this->messages['passing'] = $pass;
 
         return $this;
     }
@@ -112,7 +164,7 @@ final class Check
      */
     public function failing(string $message): Check
     {
-        $this->failingMessage = $message;
+        $this->messages['failing'] = $message;
 
         return $this;
     }
@@ -147,35 +199,45 @@ final class Check
         return $this;
     }
 
+    public function skip(bool $skip, string $skipping): Check
+    {
+        $this->skip = $skip;
+        $this->messages['skipping'] = $skipping;
+
+        return $this;
+    }
+
     /**
      * Run check and get the result.
      */
     public function check(): CheckResult
     {
+        if ($this->skip) {
+            $status = Status::skipping();
+        } else {
+            $status = $this->check->check()
+                ? Status::passing()
+                : Status::failing();
+        }
+
+        $message = $this->message($status);
+
         return new CheckResult(
-            $this->name,
-            $this->type,
-            $passing = $this->check->check(),
-            $this->getMessage($passing)
+            $this->name, $this->code, $this->type, $status, $message
         );
     }
 
     /**
-     * Get formated message based on result.
-     *
-     * @since 0.1.0
+     * Get a message based on status.
      */
-    private function getMessage(bool $isPassing): string
+    private function message(Status $status): string
     {
-        $msg = $isPassing ? $this->passingMessage : $this->failingMessage;
         $keys = array_map(static function ($key) {
             return ":${key}";
         }, array_keys($this->check->data()));
 
-        return str_replace(
-            $keys,
-            array_values($this->check->data()),
-            $msg
-        );
+        $values = array_values($this->check->data());
+
+        return str_replace($keys, $values, $this->messages[(string) $status]);
     }
 }

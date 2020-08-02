@@ -13,20 +13,22 @@ Framework agnostic application health and requirement checks.
 ```php
 use \Gerardojbaez\PhpCheckup\Checks\Php\ExtensionIsLoaded;
 use \Gerardojbaez\PhpCheckup\Manager;
+use \Gerardojbaez\PhpCheckup\Runner;
 
-$checks = new Manager;
+$manager = new Manager;
 
 // Register checks
-$checks->add(
+$manager->add(
     (new Check('Required PHP extension "mbstring" is installed', new ExtensionIsLoaded('mbstring')))
         ->group('requirements')
-        ->passing('The extension installed')
+        ->passing('The extension is installed')
         ->failing('The extension is not installed. Please install or enable it before proceeding.')
         ->critical()
 );
 
 // Run checks
-$checks->isPassing();
+$runner = new Runner($manager);
+$runner->run()->isPassing();
 ```
 
 ## Why
