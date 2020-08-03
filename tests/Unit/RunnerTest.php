@@ -20,10 +20,10 @@ class RunnerTest extends TestCase
             ->method('checks')
             ->willReturn($checks);
 
-        $runner = new Runner($manager);
+        $runner = new Runner();
 
         // Act
-        $result = $runner->run();
+        $result = $runner->run($manager);
 
         // Assert
         $this->assertCount(1, $result->getChecksResult());

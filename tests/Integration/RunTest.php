@@ -17,10 +17,10 @@ class RunTest extends TestCase
             $this->createCheck('Check two')
         ]);
 
-        $runner = new Runner($manager);
+        $runner = new Runner();
 
         // Act
-        $result = $runner->run();
+        $result = $runner->run($manager);
 
         // Assert
         $this->assertTrue($result->isPassing());
@@ -37,10 +37,10 @@ class RunTest extends TestCase
             $this->createCheck('Regular check', true)
         ]);
 
-        $runner = new Runner($manager);
+        $runner = new Runner();
 
         // Act
-        $result = $runner->run();
+        $result = $runner->run($manager);
 
         // Assert
         $this->assertFalse($result->isPassing());
@@ -63,10 +63,10 @@ class RunTest extends TestCase
             $this->createCheck('Regular check', true)
         ]);
 
-        $runner = new Runner($manager);
+        $runner = new Runner();
 
         // Act
-        $result = $runner->run();
+        $result = $runner->run($manager);
 
         // Assert
         $this->assertTrue($result->isPassing());
@@ -90,10 +90,10 @@ class RunTest extends TestCase
             $this->createCheck('Regular check', true)
         ]);
 
-        $runner = new Runner($manager);
+        $runner = new Runner();
 
         // Act
-        $result = $runner->run();
+        $result = $runner->run($manager);
 
         // Assert
         $this->assertCount(4, $result->getChecksResult());
@@ -118,10 +118,10 @@ class RunTest extends TestCase
             $this->createCheck('Regular check', true)
         ]);
 
-        $runner = new Runner($manager);
+        $runner = new Runner();
 
         // Act
-        $result = $runner->run();
+        $result = $runner->run($manager);
 
         // Assert
         $this->assertTrue($result->isPassing());

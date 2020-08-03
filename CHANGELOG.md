@@ -1,6 +1,16 @@
 # Changelog
 
-## [unreleased]
+## [0.6.0] - 2020-08-02
+
+### Added
+
+- `Gerardojbaez\PhpCheckup\Contracts\Runner`
+
+### Changed
+
+- `Gerardojbaez\PhpCheckup\Runner` now accepts manager instance directly in `run()` method, not in the constructor.
+
+## [0.5.0] - 2020-08-02
 
 ### Added
 

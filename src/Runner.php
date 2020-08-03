@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Gerardojbaez\PhpCheckup;
 
 use Gerardojbaez\PhpCheckup\Contracts\Manager;
+use Gerardojbaez\PhpCheckup\Contracts\Runner as RunnerInterface;
 
-final class Runner
+final class Runner implements RunnerInterface
 {
     /**
      * The runner instance.
@@ -16,18 +17,12 @@ final class Runner
     private $manager;
 
     /**
-     * Create a new runner instance.
-     */
-    public function __construct(Manager $manager)
-    {
-        $this->manager = $manager;
-    }
-
-    /**
      * Run checks.
      */
-    public function run(): RunResult
+    public function run(Manager $manager): RunResult
     {
+        $this->manager = $manager;
+
         return $this->runChecks($this->manager->checks());
     }
 
